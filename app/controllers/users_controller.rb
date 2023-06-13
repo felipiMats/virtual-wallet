@@ -27,7 +27,8 @@ class UsersController < ApplicationController
    
     respond_to do |format|
       if @user.save
-        @user.create_wallet
+        create_wallet_with_extracts(@user)
+
         #wallet = Wallet.create(user_id: user.id, amount: 0)
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
@@ -63,6 +64,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def create_wallet_with_extracts(user)
+    wallet = user.create_wallet
+    wallet.extracts.create
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -74,3 +80,4 @@ class UsersController < ApplicationController
       params.require(:user).permit(:user_name, :email, :birthdate)
     end
 end
+
