@@ -1,11 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
+
 <!---<%= render @extract %>--->
 
 <div>
   <h2>Extracts</h2> 
   
-  <% @extracts.each do |extract| %>
+  <% @extracts.sort_by(&:created_at).reverse_each do |extract| %>
     <% if extract.wallet.user.id == @wallet.user.id and extract.value != nil %>
       <p>Value: <%= extract.value %></p>
       <p>Type: <%= extract.transaction_type %></p>

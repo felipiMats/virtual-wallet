@@ -1,4 +1,8 @@
-<p style="color: green"><%= notice %></p>
+<% if notice == 'Withdrawal successful.' || notice == 'Deposit successful.' %>
+  <p style="color: green"><%= notice %></p>
+<% else %>
+  <p style="color: red"><%= notice %></p>
+<% end %>
 
 <%= render @wallet %>
 

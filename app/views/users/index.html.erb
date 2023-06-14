@@ -1,9 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Users Home</h1>
+<h1>All Users</h1>
 
 <div id="users">
   <% @users.each do |user| %>
+    <hr>
     <%= render user %>
     <p>
       <%= link_to "Show this user", user %>
