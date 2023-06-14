@@ -6,12 +6,10 @@
   <h2>Extracts</h2> 
   
   <% @extracts.each do |extract| %>
-    <% if extract.wallet.user.id == @wallet.user.id %>
+    <% if extract.wallet.user.id == @wallet.user.id and extract.value != nil %>
       <p>Value: <%= extract.value %></p>
       <p>Type: <%= extract.transaction_type %></p>
       <hr>
-    <% else %>
-      <p>No extracts found.</p>
     <% end %>
   <% end %>
   <!---<%= link_to "Edit this extract", edit_extract_path(@extract) %>---> |

@@ -3,9 +3,7 @@
 <%= render @wallet %>
 
 <div>
-  <!---<%= link_to "Edit this wallet", edit_wallet_path(@wallet) %>---> |
-  <%= link_to "Back to user", user_path %> |
-  <%= link_to "Show this extract", extract_path %>
+  <!---<%= link_to "Edit this wallet", edit_wallet_path(@wallet) %>--->
 
   <%= form_tag withdraw_or_deposit_wallet_path(@wallet), method: :post do %>
     <div>
@@ -15,9 +13,13 @@
     <div>
       <%= label_tag :operation, 'Operation:' %>
       <%= select_tag :operation, options_for_select([['Withdraw', 'withdraw'], ['Deposit', 'deposit']]) %>
+      <%= submit_tag 'Submit' %>
     </div>
-    <%= submit_tag 'Submit' %>
+    
   <% end %>
+  <hr>
+  <%= link_to "Back to user", user_path %> |
+  <%= link_to "Show this extract", extract_path %>
 
   
 

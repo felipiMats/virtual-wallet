@@ -2,13 +2,12 @@
 
 <%= render @user %>
 
-
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
   <%= link_to "Back to users", users_path %> |
 
   <%= link_to "Show this wallet", wallet_path %>
-
+  <hr>
   <%= button_to "Destroy this user", @user, method: :delete %>
   
   
