@@ -66,7 +66,6 @@ class UsersController < ApplicationController
 
   def create_wallet_with_extracts(user)
     wallet = user.create_wallet
-    wallet.extracts.create
   end
 
   private
