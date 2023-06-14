@@ -1,8 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @extract %>
+<!---<%= render @extract %>--->
 
 <div>
+  <h2>Extracts</h2> 
+  
+  <% @extracts.each do |extract| %>
+    <% if extract.wallet.user.id == @wallet.user.id %>
+      <p>Value: <%= extract.value %></p>
+      <p>Type: <%= extract.transaction_type %></p>
+      <hr>
+    <% else %>
+      <p>No extracts found.</p>
+    <% end %>
+  <% end %>
   <!---<%= link_to "Edit this extract", edit_extract_path(@extract) %>---> |
   <%= link_to "Back to wallet", wallet_path %>
 

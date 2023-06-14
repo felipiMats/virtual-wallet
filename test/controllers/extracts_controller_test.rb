@@ -17,7 +17,7 @@ class ExtractsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create extract" do
     assert_difference("Extract.count") do
-      post extracts_url, params: { extract: { type: @extract.type, user_id: @extract.user_id, value: @extract.value } }
+      post extracts_url, params: { extract: { transaction_type: @extract.transaction_type, user_id: @extract.user_id, value: @extract.value } }
     end
 
     assert_redirected_to extract_url(Extract.last)
@@ -34,7 +34,7 @@ class ExtractsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update extract" do
-    patch extract_url(@extract), params: { extract: { type: @extract.type, user_id: @extract.user_id, value: @extract.value } }
+    patch extract_url(@extract), params: { extract: { transaction_type: @extract.transaction_type, user_id: @extract.user_id, value: @extract.value } }
     assert_redirected_to extract_url(@extract)
   end
 

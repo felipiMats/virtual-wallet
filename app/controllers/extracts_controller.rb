@@ -8,6 +8,8 @@ class ExtractsController < ApplicationController
 
   # GET /extracts/1 or /extracts/1.json
   def show
+    @wallet = Wallet.find(params[:id])
+    @extracts = @wallet.extracts
   end
 
   # GET /extracts/new
@@ -65,6 +67,6 @@ class ExtractsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def extract_params
-      params.require(:extract).permit(:user_id, :value, :type)
+      params.require(:extract).permit(:user_id, :value, :transaction_type)
     end
 end

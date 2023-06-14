@@ -14,7 +14,7 @@ class ExtractsTest < ApplicationSystemTestCase
     visit extracts_url
     click_on "New extract"
 
-    fill_in "Type", with: @extract.type
+    fill_in "Transaction_type", with: @extract.transaction_type
     fill_in "User", with: @extract.user_id
     fill_in "Value", with: @extract.value
     click_on "Create Extract"
@@ -27,7 +27,7 @@ class ExtractsTest < ApplicationSystemTestCase
     visit extract_url(@extract)
     click_on "Edit this extract", match: :first
 
-    fill_in "Type", with: @extract.type
+    fill_in "Transaction_type", with: @extract.transaction_type
     fill_in "User", with: @extract.user_id
     fill_in "Value", with: @extract.value
     click_on "Update Extract"

@@ -3,9 +3,9 @@
 one:
   user_id: 1
   value: 1.5
-  type: 
+  transaction_type: 
 
 two:
   user_id: 1
   value: 1.5
-  type: 
+  transaction_type: 

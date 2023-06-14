@@ -7,5 +7,19 @@
   <%= link_to "Back to user", user_path %> |
   <%= link_to "Show this extract", extract_path %>
 
+  <%= form_tag withdraw_or_deposit_wallet_path(@wallet), method: :post do %>
+    <div>
+      <%= label_tag :value, 'Amount:' %>
+      <%= number_field_tag :value, nil, step: '0.01' %>
+    </div>
+    <div>
+      <%= label_tag :operation, 'Operation:' %>
+      <%= select_tag :operation, options_for_select([['Withdraw', 'withdraw'], ['Deposit', 'deposit']]) %>
+    </div>
+    <%= submit_tag 'Submit' %>
+  <% end %>
+
+  
+
   <!---<%= button_to "Destroy this wallet", @wallet, method: :delete %>--->
 </div>

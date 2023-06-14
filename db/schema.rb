@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_181859) do
 
   create_table "extracts", force: :cascade do |t|
     t.float "value"
-    t.string "type"
+    t.string "transaction_type"
     t.bigint "wallet_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

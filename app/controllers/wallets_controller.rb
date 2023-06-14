@@ -8,6 +8,8 @@ class WalletsController < ApplicationController
 
   # GET /wallets/1 or /wallets/1.json
   def show
+    @wallet = Wallet.find(params[:id])
+    @extracts = @wallet.extracts
   end
 
   # GET /wallets/new
@@ -56,6 +58,39 @@ class WalletsController < ApplicationController
       format.html { redirect_to wallets_url, notice: "Wallet was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  # POST amount of wallet
+  def withdraw_or_deposit
+    @wallet = Wallet.find(params[:id])
+    value = params[:value].to_f
+
+    case params[:operation]
+    when 'withdraw'
+      if @wallet.amount >= value
+        @wallet.amount -= value
+        @wallet.save
+        create_extract(value, 'withdraw')
+        redirect_to @wallet, notice: 'Withdrawal successful.'
+      else
+        redirect_to @wallet, alert: "Insufficient funds for withdrawal."
+      end
+    when 'deposit'
+      if value > 0
+        @wallet.amount += value
+        @wallet.save
+        create_extract(value, 'deposit')
+        redirect_to @wallet, notice: 'Deposit successful.'
+      else
+        redirect_to @wallet, alert: "Invalid deposit amount."
+      end
+    end
+  end
+
+  private
+
+  def create_extract(value, type)
+    @wallet.extracts.create(value: value, transaction_type: type)
   end
 
   private
