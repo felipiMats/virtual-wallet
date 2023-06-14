@@ -9,6 +9,7 @@
     <% if extract.wallet.user.id == @wallet.user.id and extract.value != nil %>
       <p>Value: <%= extract.value %></p>
       <p>Type: <%= extract.transaction_type %></p>
+      <p>Date: <%= extract.created_at %></p>
       <hr>
     <% end %>
   <% end %>
