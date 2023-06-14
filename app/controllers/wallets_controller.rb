@@ -73,7 +73,7 @@ class WalletsController < ApplicationController
         create_extract(value, 'withdraw')
         redirect_to @wallet, notice: 'Withdrawal successful.'
       else
-        redirect_to @wallet, alert: "Insufficient funds for withdrawal."
+        redirect_to @wallet, notice: "Insufficient funds for withdrawal."
       end
     when 'deposit'
       if value > 0
@@ -82,7 +82,7 @@ class WalletsController < ApplicationController
         create_extract(value, 'deposit')
         redirect_to @wallet, notice: 'Deposit successful.'
       else
-        redirect_to @wallet, alert: "Invalid deposit amount."
+        redirect_to @wallet, notice: "Invalid deposit amount."
       end
     end
   end
